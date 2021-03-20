@@ -19,8 +19,8 @@ sidebar-avatar: /img/avatar_binggan.jpg      # use absolute URL, seeing it's use
 # SNS settings
 RSS: false
 # weibo_username:     暂无
-zhihu_username:     暂无
-github_username:    暂无
+zhihu_username:     FPGAplayer
+github_username:    Gaoustcer
 facebook_username:  暂无
 jianshu_username:   暂无
 #twitter_username:   暂无
@@ -96,16 +96,16 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "WP",
-        href: "https://wangpei.ink"
+        title: "University of Computer Science and Technology of China",
+        href: "https://ustc.edu.cn"
     },{
-        title: "简书·BY",
-        href: "http://www.jianshu.com/u/e71990ada2fd"
+        title: "zhihu",
+        href: "http://www.zhihu.com"
     },{
-        title: "Apple",
-        href: "https://apple.com"
+        title: "Stackoverflow",
+        href: "https://stackoverflow.com/"
     },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
+        title: "Front end study material",
+        href: "https://w3school.com.cn"
     }
 ]

@@ -7,7 +7,7 @@ author:     Haihan Gao
 header-img: img/post-bg-swift2.jpg
 catalog: true
 tags:
-    - Tylor
+    - Missing course in CS education
 ---
 
 

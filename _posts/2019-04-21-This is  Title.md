@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      This is title
-subtitle:   This is subtitle
-date:       2019-04-21
+title:      Missing Semester of CS education
+subtitle:   My first blog
+date:       2021-03-24
 author:     Haihan Gao
 header-img: img/post-bg-swift2.jpg
 catalog: true

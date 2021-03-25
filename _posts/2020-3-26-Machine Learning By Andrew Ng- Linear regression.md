@@ -2,7 +2,7 @@
 layout:     post
 title:      Machine Learning By Andrew Ng- Linear regression
 subtitle:   Machine Learning course
-date:       2021-03-24
+date:       2021-03-25
 author:     Haihan Gao
 header-img: img/post-bg-swift2.jpg
 catalog: true

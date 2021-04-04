@@ -40,3 +40,23 @@ description: "Gaoustcer's Blog"
     {% endif %}
 </ul>
 {% endif %}
+
+<div class="post-preview">
+    <a href="plan/plan_for_This_week.md">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        
+    </p>
+</div>
+<hr>

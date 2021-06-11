@@ -140,7 +140,7 @@ A MM satisfies p-sentive k-anonymity property if it
 
 * 基本思想是出现最多的变量不应该出现的太过于频繁，出现最少的变量不应该出现的过于稀疏
   * $(s_1,s_2,...,s_m)$是敏感值，$q^*$是返回过的QI值
-  * 对$(q^*,s_1) (q^*,s_2)...,(q^*,s_m)$的个数进行计数并排序，得到序列$r_1,r_2,...,r_m$
+  * 对$(q^*,s_1)$ $(q^*,s_2)...,(q^*,s_m)$的个数进行计数并排序，得到序列$r_1,r_2,...,r_m$
   * (c,l)diversity $r_1<c(r_l+r_{l+1}+...+r_m)$
 * Positive Disclosure && Nagative Disclosure
   * Positive Disclosure可以正确地判断个体具有某些敏感属性

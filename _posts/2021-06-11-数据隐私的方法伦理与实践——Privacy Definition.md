@@ -152,7 +152,7 @@ A MM satisfies p-sentive k-anonymity property if it
 * 如果一个公开泛化的表违反了隐私，那么就意味着表中敏感信息的分布和我们的知识f差异很大
   * 先验知识和后验知识差距很大
 * 攻击者的背景知识
-  * $$\alpha (q,s)=P_f(t(s)=s|t(q)=q)=\frac{f(s,q)}{\sum_{{s}\in S}f(s,q)}$$
+  * $$\alpha (q,s)=P_f(t(s)=s|t(q)=q)=\frac{f(s,q)}{\sum_{s}\in S}f(s,q)}$$
 * 表T\*是根据表T泛化得到的，q被泛化为q\*，关于敏感信息的后验知识是
   * $$\beta(q,s,T*)=P_f(t[s]=s|t[q]=q \quad and \quad T* \quad and \quad t\in T*)$$
 * 隐私被衡量为观察者的信息增益

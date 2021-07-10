@@ -1,0 +1,112 @@
+# 用PyTorch实现简单的神经网络
+
+## 需要用到的模块
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import matplotlib.pyplot as plt
+from torch.autograd import Variable
+```
+
+* `torch.nn`中提供了一些常见的网络结构
+* `torch.nn.functional`提供了一些常见的神经网络函数，包括relu函数等
+
+## 基本框架
+
+```python
+class Net(nn.Module):
+    def __init__(self):
+        super(self).__init__()
+        pass
+    def forward(self):
+        pass
+```
+
+* `__init__()`定义网络的基本结构并初始化参数权重
+* `forward()`定义网络数据流，比如下列模型
+
+```python
+class Net(nn.Module):
+    def __init__(self,n_input,n_hidden,n_output):
+        super(Net,self).__init__()
+        self.hidden1 = nn.Linear(n_input,n_hidden)
+        self.hidden2 = nn.Linear(n_hidden,n_hidden)
+        self.predict = nn.Linear(n_hidden,n_output)
+    def forward(self,input):
+        out = self.hidden1(input)
+        out = F.relu(out)
+        out = self.hidden2(out)
+        out = F.sigmoid(out)
+        out =self.predict(out)
+
+        return out
+```
+
+该网络具有两个隐藏层，以及最后一层输出，这是一个预测器，最终输出的是一个概率
+
+`forward`中定义的是数据流动的方向，可以这样理解，输入先经过`hidden1`产生一个输出out，out再经过一个`relu`函数作为`hidden2`的输入，以此类推
+
+这个网络有一些参数，分别是输入的维度`n_input`，隐藏层维度`n_hidden`,输出维度`n_output`
+
+实例化一个神经网络
+
+```python
+net = Net(1,20,1)
+print(net)
+```
+
+输出网络体系结构
+
+```shell
+Net(
+  (hidden1): Linear(in_features=1, out_features=20, bias=True)
+  (hidden2): Linear(in_features=20, out_features=20, bias=True)
+  (predict): Linear(in_features=20, out_features=1, bias=True)
+)
+```
+
+## 构建优化目标和损失函数
+
+构建一个机器学习模型必要的三个步骤是
+
+* 设计模型体系结构
+* 设计损失函数
+* 基于损失函数和训练数据逐步优化网络参数
+
+`torch.optim`是一个实现了各种优化算法的库，支持大部分常用的算法，并且具有良好的通用性。我们需要构建一个`optimizer`对象，这个对象保存的是当前参数并根据计算得到的梯度对参数进行更新
+
+### `Optimizer`是个啥
+
+准确的说包含两个方面
+
+* 需要训练的数据(网络参数)，可以用`network.parameters()`获得
+* 学习率和损失函数，这里`torch.nn`中提供了一些常见的损失函数
+
+```python
+optimizer = torch.optim.SGD(net.parameters(),lr = 0.1)
+loss_func = torch.nn.MSELoss()
+```
+
+* 初始化了一个SGD优化器——随机梯度下降，优化器的作用是根据网络反向传播的梯度信息来更新网络的参数，起到降低训练损失的作用，通过`step`方法进行更新
+* 损失函数采用均方损失
+
+### 如何进行梯度下降训练
+
+* 计算当前参数下的损失值
+* 对损失值求导，进行后向传播
+
+```python
+for t in range(5000):
+    prediction = net(x)
+    loss = loss_func(prediction,y)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+```
+
+* `zero_grad`将梯度置0，即$\frac{\partial \ loss}{\partial \ weight}=0$
+* `loss.backward()`对loss进行反向传播
+* `optimizier.step()`对梯度进行优化，更新参数
